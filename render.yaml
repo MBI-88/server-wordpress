@@ -1,23 +1,36 @@
 services:
   - type: web
     name: wordpress
+    runtime: docker
     env: docker
+    region: oregon
+    plan: free
+    branch: master
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     envVars:
       - key: WORDPRESS_DB_HOST
-        value: ${db.HOST}
+        fromSevice:
+          type: web
+          name: dbmysql
+          property: host
       - key: WORDPRESS_DB_USER
         value: rootwordpress
       - key: WORDPRESS_DB_PASSWORD
         value: wordpresspassword
       - key: WORDPRESS_DB_NAME
         value: wordpressdb
-    ports:
-      - 80
+      - key: PORT 
+        value: 80
 
-databases:
-  - name: db
+  - type: web
+    name: dbmysql
+    dockerfilePath: ./Dockerfile.mysql
+    healthCheckPath: /
+    region: oregon
+    plan: free
+    databaseName: wordpressdb
+    user: rootwordpress
     engine: mysql
     version: 8.1
     envVars:
