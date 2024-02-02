@@ -33,7 +33,3 @@ services:
       - key: PORT 
         value: 3306
 
-databases:
-  - name: db
-    engine: mysql
-    version: 8.0
