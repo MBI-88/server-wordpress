@@ -2,6 +2,8 @@ services:
   - type: web
     name: wordpress
     env: docker
+    plan: free
+    region: oregon
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     envVars:
@@ -20,6 +22,8 @@ services:
   - type: web
     name: mysql-service
     env: docker
+    plan: free
+    region: oregon
     dockerfilePath: ./Dockerfile.mysql
     envVars:
       - key: MYSQL_ROOT_PASSWORD
