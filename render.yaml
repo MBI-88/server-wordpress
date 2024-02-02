@@ -19,7 +19,7 @@ services:
         value: 80
       
 
-  - type: private
+  - type: pserv
     name: mysql-service
     env: docker
     plan: free
