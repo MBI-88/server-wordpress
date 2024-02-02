@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: wordpress
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: WORDPRESS_DB_HOST
+        value: ${db.HOST}
+      - key: WORDPRESS_DB_USER
+        value: rootwordpress
+      - key: WORDPRESS_DB_PASSWORD
+        value: wordpresspassword
+      - key: WORDPRESS_DB_NAME
+        value: wordpressdb
+    ports:
+      - 80
+
+databases:
+  - name: db
+    engine: mysql
+    version: 8.1
+    envVars:
+      - key: MYSQL_DATABASE
+        value: wordpressdb
+      - key: MYSQL_USER
+        value: rootwordpress
+      - key: MYSQL_PASSWORD
+        value: wordpresspassword
