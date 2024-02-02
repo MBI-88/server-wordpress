@@ -29,10 +29,6 @@ services:
     healthCheckPath: /
     region: oregon
     plan: free
-    databaseName: wordpressdb
-    user: rootwordpress
-    engine: mysql
-    version: 8.1
     envVars:
       - key: MYSQL_DATABASE
         value: wordpressdb
