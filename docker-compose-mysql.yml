@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  mysqlwordpress:
+    image: mysql:8.1
+    volumes:
+      - db:/var/lib/mysql
+    restart: always
+    ports: 
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: rootwordpress
+      MYSQL_PASSWORD: wordpresspassword
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
+volumes:
+  db_data:

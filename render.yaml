@@ -8,7 +8,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: WORDPRESS_DB_HOST
-        value: ${services.mysql-service.address}
+        value: mysql-service:3306
       - key: WORDPRESS_DB_USER
         value: rootwordpress
       - key: WORDPRESS_DB_PASSWORD
@@ -19,7 +19,7 @@ services:
         value: 80
       
 
-  - type: web
+  - type: private
     name: mysql-service
     env: docker
     plan: free

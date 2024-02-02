@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: mysqlwordpress:3306
+      WORDPRESS_DB_USER: your_mysql_user
+      WORDPRESS_DB_PASSWORD: your_mysql_password
+      WORDPRESS_DB_NAME: your_mysql_database
+    volumes:
+      - wordpress_data:/var/www/html
+
+volumes:
+  wordpress_data:
