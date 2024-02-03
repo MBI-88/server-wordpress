@@ -36,6 +36,11 @@ RUN mkdir -p /var/run/mysqld \
     && mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';" \
     && mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
 
+# Crear directorios para la persistencia de datos de MySQL y WordPress
+RUN mkdir -p /var/lib/mysql /var/www/html
+
+# Configurar volúmenes para la persistencia de datos
+VOLUME ["/var/lib/mysql", "/var/www/html"]
 
 RUN rm /var/www/html/*.html
 
